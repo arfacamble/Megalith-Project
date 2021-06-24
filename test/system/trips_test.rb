@@ -17,9 +17,25 @@ class TripsTest < ApplicationSystemTestCase
     click_on "Create Trip"
 
     save_and_open_screenshot
-    assert_equal page.current_path, edit_trip_path(Trip.last)
+    assert_equal edit_trip_path(Trip.last), page.current_path
     assert_equal Trip.count, trip_count + 1
     assert_text "Describe and plan your walk with your fellow enthusiasts!"
+  end
+
+  test "user cannot create an invalid trip" do
+    log_in
+    trip_count = Trip.count
+
+    visit megalith_path(Megalith.first)
+    find_button('Plan a trip').click
+    # save_and_open_screenshot
+
+    # save_and_open_screenshot
+    click_on "Create Trip"
+
+    save_and_open_screenshot
+    assert_equal megalith_path(Megalith.first), page.current_path
+    assert_equal Trip.count, trip_count
   end
 
   private
