@@ -1,9 +1,9 @@
 <%= link_to megalith_path(megalith) do %>
   <div class="card-map">
     <div class="card-map-image-container">
-      <% if megalith.megalith_photos.first.photo.attached? %>
+      <% if megalith.megalith_photos.first&.photo&.attached? %>
       <%= cl_image_tag megalith.megalith_photos.first.photo.key, class: "card-map-image" %>
-      <% else %>
+      <% elsif megalith.megalith_photos.first&.photo_key %>
       <%= cl_image_tag megalith.megalith_photos.first.photo_key, class: "card-map-image" %>
       <% end %>
     </div>
