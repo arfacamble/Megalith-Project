@@ -16,7 +16,7 @@ class TripsTest < ApplicationSystemTestCase
     # save_and_open_screenshot
     click_on "Create Trip"
 
-    save_and_open_screenshot
+    # save_and_open_screenshot
     assert_equal edit_trip_path(Trip.last), page.current_path
     assert_equal Trip.count, trip_count + 1
     assert_text "Describe and plan your walk with your fellow enthusiasts!"
@@ -33,9 +33,11 @@ class TripsTest < ApplicationSystemTestCase
     # save_and_open_screenshot
     click_on "Create Trip"
 
-    save_and_open_screenshot
-    assert_equal megalith_path(Megalith.first), page.current_path
+    # save_and_open_screenshot
     assert_equal Trip.count, trip_count
+    # in next line, why is it at POST method rather than
+    # new_megalith_trip_path(Megalith.first) which is what shows in the screenshot above?
+    assert_equal megalith_trips_path(Megalith.first), page.current_path
   end
 
   private

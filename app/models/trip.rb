@@ -5,9 +5,13 @@ class Trip < ApplicationRecord
   has_many :trip_photos, dependent: :destroy
   has_many :users, through: :trip_users
   has_many :megaliths, through: :trip_megaliths
-  acts_as_votable
+
+  validates :name, length: { minimum: 6 }
+  validates :tagline, length: { minimum: 10 }
 
   after_update :update_visiteds, if: :visited?
+
+  acts_as_votable
 
   def visited?
     date_visited
