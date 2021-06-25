@@ -14,6 +14,16 @@ class CommentsTest < ApplicationSystemTestCase
     assert Comment.count == initial_comment_count + 1
   end
 
+  test "User cannot add a blank comment" do
+    initial_comment_count = Comment.count
+    log_in
+    visit megalith_path(Megalith.first)
+    # save_and_open_screenshot
+
+    click_on 'Create Comment'
+    assert Comment.count == initial_comment_count
+  end
+
   private
 
   def log_in
