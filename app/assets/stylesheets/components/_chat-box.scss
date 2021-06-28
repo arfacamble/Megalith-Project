@@ -15,9 +15,6 @@
   input#chat_message_content {
     width: 100%;
   }
-  p {
-    margin-bottom: 0;
-  }
 }
 
 .chat-message {
@@ -29,4 +26,13 @@
   p {
     flex-grow: 1;
   }
+}
+
+.chat-messages-container {
+  max-height: 320px;
+  overflow: scroll;
+}
+
+.chat-message-content {
+  margin: 4px 8px;
 }

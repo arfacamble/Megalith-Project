@@ -92,13 +92,13 @@
     <!-- chatbox -->
     <div class="chat-box" id="chat-anchor">
       <h2>Chat about <%= @trip.name %></h2>
-      <div class="chat-messages-container">
-        <%= render partial: 'trip_chat_boxes/chat_message', collection: @trip_chat_box.chat_messages %>
-      </div>
       <%= simple_form_for [ @trip_chat_box, @chat_message ], wrapper: :inline_form, html: { class: 'form-inline mt-1' }, remote: true do |f| %>
         <%= f.input :content, label: false, placeholder: "Chat about #{@trip.name}" %>
         <%= f.submit class: "btn btn-outline-success", value: "Send" %>
       <% end %>
+      <div class="chat-messages-container">
+        <%= render partial: 'trip_chat_boxes/chat_message', collection: @trip_chat_box.chat_messages.reverse %>
+      </div>
     </div>
     <!-- megaliths visited -->
     <div class="trip-basics">
