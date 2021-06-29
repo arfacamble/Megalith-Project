@@ -1,4 +1,5 @@
-<div class="chat-message" id=<%= "chat-message-#{chat_message.id}" %>>
+<% main_div_class = chat_message.user == current_user ? "chat-message flex-row-reverse margin-left-auto" : "chat-message" %>
+<div class="<%= main_div_class %>" id=<%= "chat-message-#{chat_message.id}" %>>
   <% if chat_message.user.photo.attached? %>
     <%= cl_image_tag chat_message.user.photo.key, alt: "profile avatar", class: "avatar" %>
   <% else %>
@@ -6,9 +7,7 @@
   <% end %>
   <p class="chat-message-content"><%= chat_message.content %></p>
   <!-- tootltip... -->
-  <!--  <span class="badge badge-pill badge-secondary mr-2" data-toggle="tooltip" data-placement="bottom" title="<%= megalith.name %>"><%= megalith.name.truncate(15) %></span> -->
   <div class="chat-message-details">
-    <p><%= chat_message.user.username %></p>
-    <p><small><em>Sent <%= distance_of_time_in_words(chat_message.created_at, Time.now) %> ago</em></small></p>
+    <span data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p class='m-0'><strong><%= chat_message.user.username %></strong></p> <p class='m-0'><em><small>Sent <%= distance_of_time_in_words(chat_message.created_at, Time.now) %> ago</small></em></p>"><i class="fas fa-info-circle"></i></span>
   </div>
 </div>

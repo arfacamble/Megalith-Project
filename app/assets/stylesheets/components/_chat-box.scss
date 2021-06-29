@@ -18,6 +18,7 @@
 }
 
 .chat-message {
+  width: 80%;
   margin: 8px;
   padding: 8px;
   background-color: rgba(255, 255, 255, 0.3);
@@ -35,4 +36,8 @@
 
 .chat-message-content {
   margin: 4px 8px;
+}
+
+.margin-left-auto {
+  margin-left: auto;
 }
