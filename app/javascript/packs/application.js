@@ -31,6 +31,7 @@ import { initUpdateNavbarOnScroll } from '../plugins/init_navbar.js';
 import { previewImageOnFileSelect } from '../plugins/init_image_preview.js';
 import { initFlatpickr } from "../plugins/flatpickr";
 import { initBarRating } from '../plugins/init_bar_rating';
+import { initTripChatBoxCable } from '../channels/trip_chat_box_channel';
 
 
 // Internal imports, e.g:
@@ -48,4 +49,5 @@ document.addEventListener('turbolinks:load', () => {
   })
   initGeocoder();
   initMapbox();
+  initTripChatBoxCable();
 });

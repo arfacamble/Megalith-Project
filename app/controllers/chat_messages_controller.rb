@@ -5,6 +5,7 @@ class ChatMessagesController < ApplicationController
     @chat_message.trip_chat_box = @trip_chat_box
     @chat_message.user = current_user
     if @chat_message.save
+      TripChatBoxChannel.broadcast_to(@trip_chat_box, render_to_string(partial: "chat_message", locals: { chat_message: @chat_message }))
       redirect_to trip_path(@trip_chat_box.trip, anchor: "chat-anchor")
     else
       render "chatrooms/show"
