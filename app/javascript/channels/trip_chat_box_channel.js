@@ -7,11 +7,8 @@ const initTripChatBoxCable = () => {
 
     consumer.subscriptions.create({ channel: "TripChatBoxChannel", id: id }, {
       received(data) {
-        consumer.subscriptions.create({ channel: "TripChatBoxChannel", id: id }, {
-          received(data) {
-            messagesContainer.insertAdjacentHTML('afterBegin', data);
-          }
-        });
+        const myMessageForOthers = data.replace(' flex-row-reverse margin-left-auto', '');
+        messagesContainer.insertAdjacentHTML('afterBegin', myMessageForOthers);
       },
     });
   }
