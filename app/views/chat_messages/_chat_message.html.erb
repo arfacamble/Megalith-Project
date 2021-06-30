@@ -1,0 +1,13 @@
+<% main_div_class = chat_message.user == current_user ? "chat-message flex-row-reverse margin-left-auto" : "chat-message" %>
+<div class="<%= main_div_class %>" id=<%= "chat-message-#{chat_message.id}" %>>
+  <% if chat_message.user.photo.attached? %>
+    <%= cl_image_tag chat_message.user.photo.key, alt: "profile avatar", class: "avatar" %>
+  <% else %>
+    <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png", alt: "profile avatar", class: "avatar" %>
+  <% end %>
+  <p class="chat-message-content"><%= chat_message.content %></p>
+  <!-- tootltip... -->
+  <div class="chat-message-details">
+    <span data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p class='m-0'><strong><%= chat_message.user.username %></strong></p> <p class='m-0'><em><small>Sent <%= distance_of_time_in_words(chat_message.created_at, Time.now) %> ago</small></em></p>"><i class="fas fa-info-circle"></i></span>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+class TripChatBoxesController < ApplicationController
+end

@@ -89,7 +89,18 @@
 
   <!-- Lower Section -->
   <div class="mt-4">
-    <!-- Placeholder for trip cards -->
+    <!-- chatbox -->
+    <div class="chat-box" id="chat-anchor">
+      <h2>Chat about <%= @trip.name %></h2>
+      <%= simple_form_for [ @trip_chat_box, @chat_message ], wrapper: :inline_form, html: { class: 'form-inline mb-1' }, remote: true do |f| %>
+        <%= f.input :content, label: false, placeholder: "Chat about #{@trip.name}" %>
+        <%= f.submit class: "btn btn-outline-success", value: "Send" %>
+      <% end %>
+      <div class="chat-messages-container" data-trip-chat-box-id="<%= @trip_chat_box.id %>">
+        <%= render partial: 'chat_messages/chat_message', collection: @trip_chat_box.chat_messages.reverse %>
+      </div>
+    </div>
+    <!-- megaliths visited -->
     <div class="trip-basics">
       <div class="trip-show-megaliths mb-4">
         <h2 class="mb-4"> Megaliths Visited </h2>
@@ -103,7 +114,7 @@
         <% end %>
       </div>
     </div>
-    <!-- placeholder for trip cards -->
+    <!-- end of megaliths visited -->
     <!-- users that came along -->
     <h2>Users</h2>
     <div class="trip-users-container-bottom">

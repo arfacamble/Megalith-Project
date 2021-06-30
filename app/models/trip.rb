@@ -5,6 +5,7 @@ class Trip < ApplicationRecord
   has_many :trip_photos, dependent: :destroy
   has_many :users, through: :trip_users
   has_many :megaliths, through: :trip_megaliths
+  has_one :trip_chat_box
 
   validates :name, length: { minimum: 6 }
   validates :tagline, length: { minimum: 10 }

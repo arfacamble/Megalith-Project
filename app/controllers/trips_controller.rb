@@ -28,6 +28,8 @@ class TripsController < ApplicationController
         image_url: helpers.asset_url('logo.png')
       }
     end
+    @trip_chat_box = @trip.trip_chat_box || TripChatBox.create(trip: @trip)
+    @chat_message = ChatMessage.new
   end
 
   def upvote
